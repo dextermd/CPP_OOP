@@ -58,8 +58,17 @@ MyArray::MyArray(const unsigned int size, const int min, const int max)
 	{
 		for (int i = 0; i < this->size; i++)
 		{
-			int rnum = rand() % (min - max + 1) + max;
-			this->arr[i] = rnum;
+			if (min < max)
+			{
+				int rnum = rand() % (max - min + 1) + min;
+				this->arr[i] = rnum;
+			}
+			else {
+				int rnum = rand() % (min - max + 1) + max;
+				this->arr[i] = rnum;
+			}
+			
+			
 		}
 	}
 
@@ -117,41 +126,153 @@ const double MyArray::avarage_array() const
 MyArray MyArray::add(const MyArray& obj) const
 {
 	MyArray result;
-	bool bFirstIsMax;
-	unsigned int t_size, t_size_min;
+	unsigned int t_size = this->size + obj.size;
 
-	this->size > obj.size ? bFirstIsMax = true : bFirstIsMax = false;
-	bFirstIsMax ? t_size = this->size, t_size_min = obj.size : t_size = obj.size, t_size_min = this->size;
-
+	if (result.arr)
+	{
+		delete[] result.arr;
+	}
+	
 	result.arr = new int[t_size];
 	result.size = t_size;
 
-	for (int i = 0; i < t_size_min; i++)
+	for (int i = 0; i < this->size; i++)
 	{
 		if (result.arr)
 		{
-			result.arr[i] = arr[i] + obj.arr[i];
+			result.arr[i] = this->arr[i];
 			
 		}
 	}
-	for (int i = t_size_min; i < result.size; i++)
+	
+	for (int i = this->size; i < t_size; i++)
 	{
 		if (result.arr)
 		{
-			if (this->size > obj.size)
-			{
-				result.arr[i] = arr[i];
-			}
-			else {
-				result.arr[i] = obj.arr[i];
-			}
-			
-
+			result.arr[i] = obj.arr[i - this->size];
 		}
 	}
 
 	return result;
 
+}
+
+
+MyArray& MyArray::operator=(const MyArray& obj)
+{
+	if (this == &obj)
+		return *this;
+
+
+	if (this->size != obj.size)
+	{
+		this->size = obj.size;
+		delete[] this->arr;
+		this->arr = new int[this->size];
+	}
+
+	for (int i = 0; i < this->size; i++)
+	{
+		this->arr[i] = obj.arr[i];
+	}
+
+	return *this;
+}
+
+const int MyArray::operator[](const int idx) const
+{
+	if (idx < 0 || idx > this->size)
+	{
+		cout << "\nНеверный индекс\n";
+		return '\0';
+	}
+	// assert(idx >= 0 && idx < this->length);
+	return this->arr[idx];
+}
+
+int& MyArray::operator[](const int idx)
+{
+	if (idx < 0 || idx > this->size)
+	{
+		cout << "\nНеверный индекс\n";
+	}
+
+	return this->arr[idx];
+}
+
+MyArray& MyArray::operator+=(const int num)
+{
+	if (this->size != num && num > 0)
+	{
+		MyArray temp;
+
+		if (temp.arr)
+		{
+			delete[] temp.arr;
+			temp.size = this->size;
+			temp.arr = new int[temp.size];
+		}
+
+		for (int i = 0; i < temp.size; i++)
+		{
+			temp.arr[i] = this->arr[i];
+		}
+
+		this->size += num;
+		delete[] this->arr;
+		this->arr = new int[this->size];
+
+		for (int i = 0; i < temp.size; i++)
+		{
+			this->arr[i] = temp[i];
+		}
+
+
+		for (int i = temp.size; i < this->size; i++)
+		{
+			this->arr[i] = 0;
+		}
+
+		// delete[] temp.arr;  // По идее temp мне больше не нужен, но при добавлении этого кода вылетает программа.
+	}
+
+	return *this;
+}
+
+MyArray& MyArray::operator+=(const MyArray& obj)
+{
+
+		MyArray temp;
+
+		if (temp.arr)
+		{
+			delete[] temp.arr;
+			temp.size = this->size;
+			temp.arr = new int[temp.size];
+		}
+
+		for (int i = 0; i < temp.size; i++)
+		{
+			temp.arr[i] = this->arr[i];
+		}
+
+		this->size += obj.size;
+		delete[] this->arr;
+		this->arr = new int[this->size];
+
+		for (int i = 0; i < temp.size; i++)
+		{
+			this->arr[i] = temp[i];
+		}
+
+		for (int i = temp.size; i < this->size; i++)
+		{
+			this->arr[i] = obj.arr[i - temp.size];
+		}
+
+		// delete[] temp.arr;  // По идее temp мне больше не нужен, но при добавлении этого кода вылетает программа.
+	
+	return *this;
 }
 
 MyArray::~MyArray()
@@ -160,4 +281,104 @@ MyArray::~MyArray()
 	arr = nullptr;
 }
 
+MyArray operator+(const MyArray& left_obj, const MyArray& right_obj)
+{
+	MyArray result;
 
+	unsigned int t_size = left_obj.size + right_obj.size;
+
+	if (result.arr)
+	{
+		delete[] result.arr;
+	}
+
+	result.arr = new int[t_size];
+	result.size = t_size;
+
+	for (int i = 0; i < left_obj.size; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = left_obj.arr[i];
+
+		}
+	}
+
+	for (int i = left_obj.size; i < t_size; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = right_obj.arr[i - left_obj.size];
+		}
+	}
+
+	return result;
+}
+
+MyArray operator+(const MyArray& obj, const int num)
+{
+	MyArray result;
+
+	unsigned int t_size = obj.size + num;
+
+	if (result.arr)
+	{
+		delete[] result.arr;
+	}
+
+	result.arr = new int[t_size];
+	result.size = t_size;
+
+	for (int i = 0; i < obj.size; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = obj.arr[i];
+
+		}
+	}
+
+	for (int i = obj.size; i < t_size; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = 0;
+		}
+	}
+
+	return result;
+}
+
+MyArray operator+(const int num, const MyArray& obj)
+{
+	MyArray result;
+
+	unsigned int t_size = obj.size + num;
+
+	if (result.arr)
+	{
+		delete[] result.arr;
+	}
+
+	result.arr = new int[t_size];
+	result.size = t_size;
+
+	for (int i = 0; i < num; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = 0;
+
+		}
+	}
+
+	for (int i = num; i < t_size; i++)
+	{
+		if (result.arr)
+		{
+			result.arr[i] = obj.arr[i - num];
+		}
+	}
+
+	return result;
+}

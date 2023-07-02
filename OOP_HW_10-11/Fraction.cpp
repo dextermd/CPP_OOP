@@ -125,7 +125,49 @@ Fraction Fraction::arithmetic_operations(const Fraction& obj, char operation) co
 	return result;
 }
 
+Fraction Fraction::operator+(const Fraction& obj) const
+{
+	Fraction result;
 
+	result.numerator = this->numerator + obj.numerator;
+	result.denominator = this->denominator + obj.denominator;
+	result.correct();
+
+	return result;
+}
+
+Fraction Fraction::operator-(const Fraction& obj) const
+{
+	Fraction result;
+
+	result.numerator = this->numerator - obj.numerator;
+	result.denominator = this->denominator - obj.denominator;
+	result.correct();
+
+	return result;
+}
+
+Fraction Fraction::operator*(const Fraction& obj) const
+{
+	Fraction result;
+
+	result.numerator = this->numerator * obj.numerator;
+	result.denominator = this->denominator * obj.denominator;
+	result.correct();
+
+	return result;
+}
+
+Fraction Fraction::operator/(const Fraction& obj) const
+{
+	Fraction result;
+
+	result.numerator = this->numerator / obj.numerator;
+	result.denominator = this->denominator / obj.denominator;
+	result.correct();
+
+	return result;
+}
 
 
 

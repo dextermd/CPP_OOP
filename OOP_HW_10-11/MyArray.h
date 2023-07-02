@@ -23,6 +23,20 @@ public:
 
 	MyArray add(const MyArray& obj) const;
 
+	MyArray& operator=(const MyArray& obj);
+
+	const int operator[](const int idx) const;
+	int& operator[](const int idx);
+
+	friend MyArray operator+(const MyArray& left_obj, const MyArray& right_obj);
+
+	friend MyArray operator+(const MyArray& obj, const int num);
+
+	friend MyArray operator+(const int num, const MyArray& obj);
+
+	MyArray& operator+=(const int num);
+
+	MyArray& operator+=(const MyArray& obj);
 
 	~MyArray();
 };

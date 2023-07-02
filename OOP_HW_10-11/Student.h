@@ -32,6 +32,17 @@ public:
         const int grade5
     );
 
+    Student
+    (
+        const char* surname,
+        const char* name,
+        const int year,
+        const char* phone,
+        const char* education,
+        const int group_num,
+        const int grades[N]
+    );
+
     // Методы
     void show() const;
 
@@ -66,6 +77,9 @@ public:
 
     static void show_array(const Student* stud_arr, const int size);
 
+    Student& operator=(const Student& obj);
+
+    void char_copy(char*& dest, const char* source);
 
     // Деструктор
     ~Student();

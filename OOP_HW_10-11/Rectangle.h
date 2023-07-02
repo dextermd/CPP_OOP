@@ -57,6 +57,8 @@ public:
 	// Статический
 	static void show(const Rectangle* arr, int size);
 
+	Rectangle& operator=(const Rectangle& obj);
+
 	// Деструктор
 	~Rectangle();
 };

@@ -29,6 +29,11 @@ public:
 
 	Fraction arithmetic_operations(const Fraction& obj, char operation) const;
 
+	Fraction operator+(const Fraction& obj) const;
+	Fraction operator-(const Fraction& obj) const;
+	Fraction operator*(const Fraction& obj) const;
+	Fraction operator/(const Fraction& obj) const;
+
 	~Fraction();
 };
 

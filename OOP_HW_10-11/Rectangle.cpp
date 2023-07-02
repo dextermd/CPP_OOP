@@ -22,7 +22,7 @@ Rectangle::Rectangle()
 	}
 }
 
-Rectangle::Rectangle(const int width, const int height, const char symbol, const char* name, const char* color_name)
+Rectangle::Rectangle(const int width, const int height, const char symbol, const char* color_name, const char* name)
 {
 	cout << "\nАдрес обьекта, вызвавшего метода " << this << endl;
 	this->width = width;
@@ -112,12 +112,12 @@ void Rectangle::set_name(const char* name)
 
 void Rectangle::show() const // Константный метод он не разрешает менять значения через this
 {
-	cout << "\nШирина         :	" << width;
-	cout << "\nВысота         :	" << height;
-	cout << "\nСимвол         :	" << symbol;
-	cout << "\nЦвет           :	" << color_name;
-	cout << "\nНаименование   : " << name;
-	cout << "\nПлощадь        : " << area();
+	cout << "\nШирина		: " << width;
+	cout << "\nВысота		: " << height;
+	cout << "\nСимвол		: " << symbol;
+	cout << "\nЦвет		: " << color_name;
+	cout << "\nНаименование	: " << name;
+	cout << "\nПлощадь		: " << area();
 	cout << endl;
 }
 
@@ -163,6 +163,27 @@ void Rectangle::show(const Rectangle* arr, int size)
 	{
 		arr[i].show();
 	}
+}
+
+Rectangle& Rectangle::operator=(const Rectangle& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	this->width = obj.width;
+	this->height = obj.height;
+	this->symbol = obj.symbol;
+	strcpy_s(this->color_name, obj.color_name);
+
+	if (strlen(this->name) != strlen(obj.name))
+	{
+		delete[] this->name;
+		this->name = new char[strlen(obj.name) + 1];
+	}
+
+	strcpy_s(this->name, strlen(obj.name) + 1, obj.name);
+
+	return *this;
 }
 
 Rectangle::~Rectangle()

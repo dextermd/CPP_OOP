@@ -116,6 +116,39 @@ Student::Student
 
 }
 
+Student::Student(const char* surname, const char* name, const int year, const char* phone, const char* education, const int group_num, const int grades[N])
+{
+    Surname = new char[strlen(surname) + 1];
+    if (Surname)
+    {
+        strcpy_s(Surname, strlen(surname) + 1, surname);
+    }
+
+    Name = new char[strlen(name) + 1];
+    if (Name)
+    {
+        strcpy_s(Name, strlen(name) + 1, name);
+    }
+
+    YearOfBirth = year;
+
+    strcpy_s(Phone, phone);
+
+    EducationName = new char[strlen(education) + 1];
+    if (EducationName)
+    {
+        strcpy_s(EducationName, strlen(education) + 1, education);
+    }
+
+    GroupNumber = group_num;
+
+
+    for (int i = 0; i < N; i++)
+    {
+        Grade[i] = grades[i];
+    }
+}
+
 
 // Методы
 void Student::show() const
@@ -298,6 +331,39 @@ void Student::show_array(const Student* stud_arr, const int size)
         cout << endl;
     }
 }
+
+Student& Student::operator=(const Student& obj)
+{
+    if (this == &obj)
+        return *this;
+
+    char_copy(this->Surname, obj.Surname);
+    char_copy(this->Name, obj.Name);
+    this->YearOfBirth = obj.YearOfBirth;
+    strcpy_s(this->Phone, obj.Phone);
+    char_copy(this->EducationName, obj.EducationName);
+    this->GroupNumber = obj.GroupNumber;
+    
+    for (int i = 0; i < N; i++)
+    {
+        this->Grade[i] = obj.Grade[i];
+    }
+
+    return *this;
+}
+
+void Student::char_copy(char*& dest, const char* source)
+{
+    if (strlen(dest) != strlen(source))
+    {
+        delete[] dest;
+        dest = new char[strlen(source) + 1];
+    }
+
+    strcpy_s(dest, strlen(source) + 1, source);
+}
+
+
 
 
 
