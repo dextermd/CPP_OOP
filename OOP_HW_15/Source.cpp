@@ -11,8 +11,8 @@
 #include "QueueRing.h"
 #include "QueuePriority.h"
 
-using namespace std;
 
+using namespace std;
 
 
 int main()
@@ -48,11 +48,38 @@ int main()
 		конструктора копирования и перегрузку оператора присваивания.
 	*/
 
+	Queue a, b, c;
+	StackD a1, b1, c1;
 
+	for (int i = 0; i < 10; i++)
+	{
+		a.Add(i);
+	}
+
+	a.Show();
+
+	b = a;
+
+	b.Show();
+
+	cout << "___________________________________\n";
+	cout << "___________________________________\n";
+	cout << "___________________________________\n";
+
+	for (int i = 1; i < 6; i++)
+	{
+		a1.push(i);
+	}
+
+	a1.show();
+
+	b1 = a1;
+
+	b1.show();
 
 #endif 
 
-#if 0
+#if 1
 
 	// Задание 3.
 	/*
@@ -62,6 +89,30 @@ int main()
 		начала очереди. Реализуйте в классе конструктор копирования и перегрузку оператора
 		присваивания. Продемонстрируйте работу класса на примерах.
 	*/
+
+	QueuePriority qp(12), cp(12);
+	qp.Add(2, 5);
+	qp.Add(-125, 6);
+	qp.Add(200, 10);
+	qp.Add(15, 7);
+	qp.Add(127, 4);
+	qp.Show();
+
+	int r;
+
+	qp.Extract(r);
+	cout << "\nExtract: " << r << endl;
+
+	qp.Extract(r);
+	cout << "\nExtract: " << r << endl;
+
+	qp.Show();
+
+	cp = qp;
+
+	cout << "\nCopy\n";
+	cp.Show();
+
 
 #endif 
 
