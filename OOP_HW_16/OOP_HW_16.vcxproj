@@ -135,7 +135,7 @@
     <ClInclude Include="Coord.h" />
     <ClInclude Include="MyArrayTemplate.h" />
     <ClInclude Include="MyString.h" />
-    <ClInclude Include="QueueTemplate.h" />
+    <ClInclude Include="QueueT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -35,7 +35,7 @@
     <ClInclude Include="MyString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueueTemplate.h">
+    <ClInclude Include="QueueT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
