@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+
+using namespace std;
+
 struct Node {
 	int data;
 	Node* next;
@@ -24,11 +28,26 @@ class ListTwo {
 
 public:
 	ListTwo();
+	ListTwo(const ListTwo& obj);
+	ListTwo(ListTwo&& obj);
 
+	ListTwo& operator=(const ListTwo& obj); // Оператор = с перемещением c глубоким копированием
+	ListTwo& operator=(ListTwo&& obj); // Оператор = с перемещением без глубокого копирования
+
+	void pop_all();
+	void pop_front();
+	void pop_back();
+	void add_begin(const int& data);
 	void push_back(const int& add);
+	void add_by_element(const int a, const int data);
 	void show() const;
-	void show(bool direction = true) const;
+	//void show(bool direction = true) const;
 	int get_count() const { return this->count; };
+	bool containe(const int& data) const;
+
+	ListTwo& operator+(const ListTwo& obj) const;
+	friend ostream& operator<<(ostream& out, const ListTwo& obj);
+	friend istream& operator>>(std::istream& in, ListTwo& obj);
 
 	~ListTwo();
 

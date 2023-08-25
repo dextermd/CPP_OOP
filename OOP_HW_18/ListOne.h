@@ -14,8 +14,8 @@ class ListOne{
 	int count;
 public:
 	ListOne();
-	ListOne(const ListOne& obj);
-	ListOne(ListOne&& obj); // Конструктор перемещения
+	ListOne(const ListOne& obj); // Конструктор Копирования
+	ListOne(ListOne&& obj); // Конструктор Перемещения
 
 	ListOne& operator=(const ListOne& obj);
 	ListOne& operator=(ListOne&& obj); // Оператор = с перемещением без глубокого копирования
