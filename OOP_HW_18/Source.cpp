@@ -12,6 +12,7 @@
 #include "MyString.h"
 #include <forward_list>
 #include "ListTwo.h"
+#include "ListTwoT.h"
 
 using namespace std;
 
@@ -78,7 +79,7 @@ int main()
 
 #endif
 
-#if 1
+#if 0
 
 	/*
 		Задание 2. 
@@ -185,6 +186,35 @@ int main()
 		Реализуйте шаблон класса Двунаправленного списка.Продемонстрируйте работу
 		шаблона на стандартных и пользовательских типах(например, класс Координата).
 	*/
+
+	ListTwoT<double> d;
+	d.add_begin(12.36);
+	d.add_begin(22.69);
+	d.add_begin(03.558);
+	d.add_begin(11.647);
+	d.show();
+	cout << "\nD = " << d;
+
+	cout << "\n-----------------------------------------------------------------------------\n";
+
+	ListTwoT<Coord> c;
+	c.add_begin({ 1 });
+	c.add_begin({ 2 });
+	c.add_begin({ 3 });
+	c.add_begin({ 4 });
+	c.show();
+	cout << "\nC = " << c;
+
+	cout << "\n-----------------------------------------------------------------------------\n";
+
+	ListTwoT<MyString> s;
+	s.add_begin("He");
+	s.add_begin("ll");
+	s.add_begin("o,");
+	s.add_begin("World!");
+	s.show();
+	cout << "\nS = " << s;
+
 
 #endif
 

@@ -138,6 +138,7 @@
     <ClInclude Include="ListOne.h" />
     <ClInclude Include="ListOneT.h" />
     <ClInclude Include="ListTwo.h" />
+    <ClInclude Include="ListTwoT.h" />
     <ClInclude Include="MyString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
