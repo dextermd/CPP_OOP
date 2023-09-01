@@ -1,0 +1,19 @@
+
+
+Surname		: Dvornicov 
+Name		: Ruslan 
+Age		: 12 
+Vuz		: STEP 
+Count Marks	: 5
+Marks		: 10 11 11 11 11 
+Average Marks	: 10.800000 
+Subjects	: Javascript C# 
+
+Surname		: Agapii 
+Name		: Tanea 
+Age		: 20 
+Vuz		: STEP 
+Count Marks	: 8
+Marks		: 9 8 6 7 7 10 9 7 
+Average Marks	: 7.875000 
+Subjects	: Javascript C# 
