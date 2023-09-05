@@ -22,7 +22,10 @@ int main()
 	*/
 
 	MyTree t;
+
 	t.Show();
+	cout << endl;
+
 	t.Add(25);
 	t.Add(4);
 	t.Add(33);
@@ -34,9 +37,21 @@ int main()
 	t.Add(15);
 	t.Add(17);
 	t.Add(50);
-	cout << endl;
-	t.Show();
 
+	t.Show();
+	cout << endl;
+
+	FILE* file;
+	errno_t err;
+
+	// Write
+	err = fopen_s(&file, "text.txt", "wb");
+	if (!err)
+	{
+		t.save_txt(file);
+		fclose(file);
+		cout << endl;
+	}
 
 #endif
 
