@@ -5,8 +5,6 @@
 #include "MyString.h"
 #include "MyTree.h"
 
-
-
 using namespace std;
 
 
@@ -16,7 +14,7 @@ int main()
 #if 1
 	/*
 		Задание 1. Для уже существующего класса Бинарного дерева поиска(MyTree) реализуйте методы для :
-		- записи данных дерева в текстовый файл;
+		+ записи данных дерева в текстовый файл;
 		- записи данных дерева в бинарный файл;
 		- чтения данных из бинарного файла с инициализацией другого дерева.
 	*/
@@ -49,6 +47,15 @@ int main()
 	if (!err)
 	{
 		t.save_txt(file);
+		fclose(file);
+		cout << endl;
+	}
+
+	// Write Binary
+	err = fopen_s(&file, "binary.txt", "wb");
+	if (!err)
+	{
+		t.save_to_binary_file(file);
 		fclose(file);
 		cout << endl;
 	}
