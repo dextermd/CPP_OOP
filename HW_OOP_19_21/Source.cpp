@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include "MyString.h"
 #include "MyTree.h"
+#include "EnRoTree.h"
 
 using namespace std;
 
@@ -11,12 +12,12 @@ using namespace std;
 int main()
 {
 
-#if 1
+#if 0
 	/*
 		Задание 1. Для уже существующего класса Бинарного дерева поиска(MyTree) реализуйте методы для :
 		+ записи данных дерева в текстовый файл;
 		+ записи данных дерева в бинарный файл;
-		- чтения данных из бинарного файла с инициализацией другого дерева.
+		+ чтения данных из бинарного файла с инициализацией другого дерева.
 	*/
 
 	MyTree t;
@@ -43,7 +44,7 @@ int main()
 	errno_t err;
 
 	// Write
-	err = fopen_s(&file, "text.txt", "wb");
+	err = fopen_s(&file, "text.txt", "w");
 	if (!err)
 	{
 		t.save_txt(file);
@@ -65,13 +66,17 @@ int main()
 	err = fopen_s(&file, "binary.txt", "rb");
 	if (!err)
 	{
-
+		c.read_from_binary_file(file);
+		fclose(file);
 	}
+	cout << "\nC = ";
+	c.Show();
+	cout << "\nCount ==== " << c.getCount();
 
 #endif
 
 
-#if 0
+#if 1
 	/*
 		Задание 2. Реализуйте англо - русский словарь с помощью бинарного дерева поиска.Ключом
 		будет служить слово на английском, значением узла – перевод слова на русский.Для слов
@@ -84,6 +89,7 @@ int main()
 		- считывание словаря из двоичного файла(с инициализацией дерева).
 	*/
 
+	EnRoTree first;
 
 
 

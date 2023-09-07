@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EnRoTree.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="MyTree.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnRoTree.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyTree.h" />
   </ItemGroup>
