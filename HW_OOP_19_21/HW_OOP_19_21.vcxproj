@@ -133,6 +133,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colors.h" />
     <ClInclude Include="EnRoTree.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyTree.h" />
