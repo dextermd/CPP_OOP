@@ -6,13 +6,10 @@ StudentAgr::StudentAgr()
 	this->name = "no name";
 	this->age = 0;
 	this->vuz = "no vuz";
-	this->marks = 0u; //unsigned int   //MyArray(unsigned int size, int val = 0);
-
+	
 }
 
-StudentAgr::StudentAgr(const MyString& surname, const MyString& name, 
-	int age, const MyString& vuz, const MyArray& marks, 
-	const ListOneType<MyString>& subjects)
+StudentAgr::StudentAgr(const MyString& surname, const MyString& name, int age, const MyString& vuz, const MyArray& marks, const ListOneT<MyString>& subjects)
 {
 	this->surname = surname;
 	this->name = name;
@@ -24,28 +21,37 @@ StudentAgr::StudentAgr(const MyString& surname, const MyString& name,
 
 ostream& operator<<(ostream& out, const StudentAgr& student)
 {
-	out << "\nФамилия:  " <<student.surname << endl;
-	out << "Имя:      " << student.name << endl;
-	out << "Возраст:  " << student.age << endl;
-	out << "Вуз:      " << student.vuz << endl;
-	if (student.marks.get_size())
+	out << "\nSurname:	" << student.surname << endl;
+	out << "\Name:		" << student.name << endl;
+	out << "\Age:		" << student.age << endl;
+	out << "\Vuz:		" << student.vuz << endl;
+	if (student.marks.avarage_array())
 	{
-		out << "Кол-во оценок :  " << student.marks.get_size() << endl;
-		out << "Оценки :  " << student.marks << endl;
-		out << "Средний балл :  " << student.get_average() << endl;
+		out << "Count Marks:	" << student.marks.get_size() << endl;
+		out << "Marks:		" << student.marks;
+		out << "MarksAverage:	" << student.get_average() << endl;
 	}
 	else {
-		out << "Оценок нет" << endl;
+		out << "Empty Marks " << endl;
 	}
-
-	//out << student.subjects << endl;
-	out << "Предметы :";
+	//out << "Subjects:		" << student.subjects << endl;
+	out << "Subjects:	";
 	student.subjects.show();
 
 	return out;
 }
 
-void StudentAgr::add_subject(const MyString & data)
+std::ostream& operator<<(std::ofstream& out, const StudentAgr& obj)
+{
+	return out;
+}
+
+std::istream& operator>>(std::ifstream& in, StudentAgr& obj)
+{
+	return in;
+}
+
+void StudentAgr::add_subject(const MyString& data)
 {
 	this->subjects.add_begin(data);
 }
@@ -57,32 +63,40 @@ bool StudentAgr::operator<(const StudentAgr& student)
 
 void StudentAgr::save_txt(FILE* f) const
 {
-	fprintf(f, "\nФамилия          :  %s", this->surname.get_str());
-	fprintf(f, "\nИмя              :  %s", name.get_str());
-	fprintf(f, "\nВозраст          :  %d", this->age);
-	fprintf(f, "\nВуз              :  %s", this->vuz.get_str());
-	fprintf(f, "\nКол-во оценок    :  %d", this->marks.get_size());
 
-	if (marks.get_size()) {
-		fprintf(f, "\nОценки           :  ");
+	fprintf(f, "\n\nSurname		: %s \n", this->surname.get_str());
+	fprintf(f, "Name		: %s \n", this->name.get_str());
+	fprintf(f, "Age		: %d \n", this->age);
+	fprintf(f, "Vuz		: %s \n", this->vuz.get_str());
+
+	if (marks.avarage_array())
+	{
+		fprintf(f, "Count Marks	: %d\n", this->marks.get_size());
+		fprintf(f, "Marks		: ");
+
 		for (int i = 0; i < this->marks.get_size(); i++)
 		{
-			fprintf(f, "%d  ", this->marks[i]);
+			fprintf(f, "%d ", this->marks[i]);
 		}
-		fprintf(f, "\nСредний балл     :  %.2f", this->get_average());
+
+		fprintf(f, "\nAverage Marks	: %f \n", this->get_average());
 	}
-	fprintf(f, "\nКол-во предметов :  %d", this->subjects.get_count());
-	if (subjects.get_count())
+
+	fprintf(f, "Subjects	: ");
+
+	for (int i = 1; i <= subjects.get_count(); i++)
 	{
-		fprintf(f, "\nПредметы         :  ");
-		for (int i = 1; i <= subjects.get_count(); i++)
-		{
-			fprintf(f, "%s  ", subjects.get_by_pos(i).get_str());
-		}
+		fprintf(f, "%s ", this->subjects.get_by_pos(i).get_str());
 	}
-	fprintf(f, "\n");
+
+	//printf("\nOk\n\n");
 }
 
+
+double StudentAgr::get_average() const
+{
+	return this->marks.avarage_array();
+}
 
 void StudentAgr::save_to_binary_file(FILE* f)
 {

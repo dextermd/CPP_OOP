@@ -3,12 +3,11 @@
 #include <fstream>				// Для работы с файлами C++
 #include <conio.h>
 #include <iomanip>
-
 #include "MyString.h"
 #include "MyArray.h"
-#include "ListOneType.h"
 #include "StudentAgr.h"
 #include "Coord.h"
+#include "ListOneT.h"
 
 using namespace std;
 
@@ -16,7 +15,7 @@ using namespace std;
 int main()
 {
 
-#if 0
+#if 1
 
 	/*
 		Задание 1. 
@@ -26,6 +25,111 @@ int main()
 				− метод для записи объекта класса в текстовый файл.
 			Продемонстрируйте добавленный функционал классов на примерах.
 	*/
+
+	cout << "\n------------------------ MyArray ---------------------------------\n";
+	
+	MyArray arr(10, 1, 99), arr2;
+
+	ofstream f("arr.txt");
+	if (f)
+	{
+		arr.save_to_file_plus(f);
+		f.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
+
+
+	ofstream fout("my_array.txt", ios::binary);
+	if (fout)
+	{
+		//arr.save_to_binary_file_plus(fout);
+		fout << arr;
+		fout.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
+	
+
+	ifstream fin("my_array.txt", ios::binary);
+	if (fin)
+	{
+		// arr2.read_from_binary_file_plus(fin);
+		fin >> arr2;
+		fin.close();
+	}
+	else {
+		cout << "\nError Reading File!";
+	}
+
+	cout << arr << endl;
+	cout << arr2 << endl;;
+
+	cout << "\n------------------------ ListOneT ---------------------------------\n";
+
+	ListOneT<int> list, list_copy;
+	list.add_end(23);
+	list.add_end(11);
+	list.add_end(69);
+	list.add_end(66);
+	list.add_end(87);
+	list.show();
+	cout << "list cout = " << list.get_count() << endl;
+
+
+	ofstream l("list.txt");
+	if (l)
+	{
+		list.save_to_file_plus(l);
+		l.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
+
+
+	ofstream fout_list("list_one_type_b.txt", ios::binary);
+	if (fout_list)
+	{
+		fout_list << list;
+		fout_list.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
+
+
+	ifstream fin_list("list_one_type_b.txt", ios::binary);
+	if (fin_list)
+	{
+		// arr2.read_from_binary_file_plus(fin);
+		fin_list >> list_copy;
+		fin_list.close();
+	}
+	else {
+		cout << "\nError Reading File!";
+	}
+
+	list_copy.show();
+	cout << "list_copy cout = " << list_copy.get_count() << endl;
+
+
+	cout << "\n------------------------ StudentAgr ---------------------------------\n";
+
+	ListOneT<MyString> sub;
+	sub.add_end("C++");
+	sub.add_end("HTML & CSS");
+	sub.add_end("Javascript");
+	sub.add_end("C#");
+
+	StudentAgr stud("Agapii", "Tanea", 22, "STEP", MyArray(15, 6, 12), sub);
+	
+	cout << stud;
+
+
+
 
 
 #endif

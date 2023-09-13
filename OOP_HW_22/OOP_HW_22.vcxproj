@@ -131,13 +131,12 @@
     <ClCompile Include="MyArray.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="MyTree.cpp" />
-    <ClCompile Include="OOP_HW_22.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StudentAgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coord.h" />
-    <ClInclude Include="ListOneType.h" />
+    <ClInclude Include="ListOneT.h" />
     <ClInclude Include="MyArray.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyTree.h" />
