@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "MyString.h"
 #include "MyArray.h"
 #include "ListOneT.h"
+#include "MyString.h"
 #include <fstream>
 
 class StudentAgr {
@@ -36,8 +36,10 @@ public:
 	void save_to_binary_file2(FILE* f);
 	void read_from_binary_file2(FILE* f);
 
+	void save_to_file_plus(std::ostream& fout) const;
+
 	// Перегрузка потока записи в файл <<
-	friend std::ostream& operator<<(std::ofstream& out, const StudentAgr& obj);
+	friend std::ostream& operator<<(std::ofstream& out, StudentAgr& obj);
 	// Перегрузка потока чтении из файла >>
 	friend std::istream& operator>>(std::ifstream& in, StudentAgr& obj);
 

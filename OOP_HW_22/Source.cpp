@@ -15,14 +15,14 @@ using namespace std;
 int main()
 {
 
-#if 1
+#if 0
 
 	/*
 		Задание 1. 
 			Для уже существующих классов(MyArray, ListOneType, StudentAgr) добавьте реализацию функционала для работы с файлами на языке С++:
-				− перегрузку потока для записи объекта класса в бинарный файл;
-				− перегрузку потока для чтения объекта класса из бинарного файла с инициализацией этого объекта;
-				− метод для записи объекта класса в текстовый файл.
+				+ перегрузку потока для записи объекта класса в бинарный файл;
+				+ перегрузку потока для чтения объекта класса из бинарного файла с инициализацией этого объекта;
+				+ метод для записи объекта класса в текстовый файл.
 			Продемонстрируйте добавленный функционал классов на примерах.
 	*/
 
@@ -124,12 +124,43 @@ int main()
 	sub.add_end("Javascript");
 	sub.add_end("C#");
 
-	StudentAgr stud("Agapii", "Tanea", 22, "STEP", MyArray(15, 6, 12), sub);
+	StudentAgr stud("Agapii", "Tanea", 22, "STEP", MyArray(15, 6, 12), sub), stud_copy;
 	
 	cout << stud;
 
+	ofstream stud_txt("stud.txt");
+	if (stud_txt)
+	{
+		stud.save_to_file_plus(stud_txt);
+		stud_txt.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
 
 
+	ofstream fout_stud("stud_b.txt", ios::binary);
+	if (fout_stud)
+	{
+		fout_stud << stud;
+		fout_stud.close();
+	}
+	else {
+		cout << "\nError Writing File!";
+	}
+
+
+	ifstream fin_stud("stud_b.txt", ios::binary);
+	if (fin_stud)
+	{
+		fin_stud >> stud_copy;
+		fin_stud.close();
+	}
+	else {
+		cout << "\nError Reading File!";
+	}
+
+	cout << stud_copy;
 
 
 #endif

@@ -41,13 +41,76 @@ ostream& operator<<(ostream& out, const StudentAgr& student)
 	return out;
 }
 
-std::ostream& operator<<(std::ofstream& out, const StudentAgr& obj)
+std::ostream& operator<<(std::ofstream& out, StudentAgr& obj)
 {
+	int len;
+	int marks_size;
+
+	len = obj.surname.getLength();
+	out.write((char*)&len, sizeof(len));
+	out.write(obj.surname, len + 1);
+
+	len = obj.name.getLength();
+	out.write((char*)&len, sizeof(len));
+	out.write(obj.name, len + 1);
+
+	out.write((char*)&obj.age, sizeof(obj.age));
+
+	len = obj.vuz.getLength();
+	out.write((char*)&len, sizeof(len));
+	out.write(obj.vuz, len + 1);
+
+	marks_size = obj.marks.get_size();
+	out.write((char*)&marks_size, sizeof(marks_size));
+	out.write((char*)obj.marks.get_ptr(), sizeof(obj.marks.get_ptr()) * marks_size);
+
+	int count = obj.subjects.get_count();
+	out.write((char*)&count, sizeof(count));
+
+	for (int i = 1; i <= count; i++)
+	{
+		len = obj.subjects.get_by_pos(i).getLength();
+		out.write((char*)&len, sizeof(len));
+		out.write(obj.subjects.get_by_pos(i).get_str(), len + 1);
+	}
+
+
 	return out;
 }
 
 std::istream& operator>>(std::ifstream& in, StudentAgr& obj)
 {
+	int len;
+	int marks_size;
+
+	in.read((char*)&len, sizeof(len));
+	in.read(obj.surname, len + 1);
+
+	in.read((char*)&len, sizeof(len));
+	in.read(obj.name, len + 1);
+
+
+	in.read((char*)&obj.age, sizeof(obj.age));
+
+	in.read((char*)&len, sizeof(len));
+	in.read(obj.vuz, len + 1);
+
+	in.read((char*)&marks_size, sizeof(marks_size));
+	obj.marks.set_size(marks_size);
+	in.read((char*)obj.marks.get_ptr(), sizeof(obj.marks.get_ptr()) * marks_size);
+
+	int count;
+	in.read((char*)&count, sizeof(count));
+
+	for (int i = 1; i <= count; i++)
+	{
+		in.read((char*)&len, sizeof(len));
+		MyString sub;
+		sub.setLength(len);
+		in.read(sub.get_str(), len + 1);
+		obj.subjects.add_end(sub);
+	}
+
 	return in;
 }
 
@@ -202,4 +265,33 @@ void StudentAgr::read_from_binary_file2(FILE* f)
 		fread(sub.get_str(), len + 1, 1, f);
 		this->subjects.add_end(sub);
 	}
+}
+
+void StudentAgr::save_to_file_plus(std::ostream& fout) const
+{
+	fout << "Surname				: " <<  this->surname.get_str() << endl;
+	fout << "Name				: " <<  this->name.get_str() << endl;
+	fout << "Age					: " << this->age << endl;
+
+	if (marks.avarage_array())
+	{
+		fout << "Count Marks			: " << this->marks.get_size() << endl;
+
+		fout << "Marks				: ";
+
+		for (int i = 0; i < this->marks.get_size(); i++)
+		{
+			fout << this->marks[i] << " ";
+		}
+
+		fout << "\nAverage Marks		: " << this->get_average() << endl;
+	}
+
+	fout << "Subjects			: ";
+
+	for (int i = 1; i <= subjects.get_count(); i++)
+	{
+		fout << this->subjects.get_by_pos(i).get_str() << " ";
+	}
+
 }
