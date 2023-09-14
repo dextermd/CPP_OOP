@@ -175,10 +175,10 @@ void StudentAgr::save_to_binary_file(FILE* f)
 
 	//for (int i = 1; i <= count; i++)
 	//{
-	//	// Запись длины строки
+	//	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	//	int len = this->subjects.get_by_pos(i).getLength();
 	//	fwrite(&len, sizeof(len), 1, f);
-	//	// Запись содержимого строки
+	//	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	//	fwrite(this->subjects.get_by_pos(i).get_str(), len + 1, 1, f);
 	//}
 }
@@ -194,27 +194,27 @@ void StudentAgr::read_from_binary_file(FILE* f)
 
 void StudentAgr::save_to_binary_file2(FILE* f)
 {
-	// Запись длины строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	int len = this->surname.getLength();
 	fwrite(& len, sizeof(len), 1, f);
-	// Запись содержимого строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	fwrite(this->surname.get_str(), this->surname.getLength() + 1, 1, f);
 
 	len = this->name.getLength();
 	fwrite(&len, sizeof(len), 1, f);
-	// Запись содержимого строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	fwrite(this->name.get_str(), this->name.getLength() + 1, 1, f);
 
 	fwrite(&this->age, sizeof(this->age), 1, f);
 
 	len = this->vuz.getLength();
 	fwrite(&len, sizeof(len), 1, f);
-	// Запись содержимого строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	fwrite(this->vuz.get_str(), this->vuz.getLength() + 1, 1, f);
 
 	len = this->marks.get_size();
 	fwrite(&len, sizeof(len), 1, f);
-	// Запись содержимого строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	fwrite(this->marks.get_ptr(), this->marks.get_size()*sizeof(int), 1, f);
 
 	int count = this->subjects.get_count();
@@ -222,10 +222,10 @@ void StudentAgr::save_to_binary_file2(FILE* f)
 	
 	for (int i = 1; i <= count; i++)
 	{
-		// Запись длины строки
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		len = this->subjects.get_by_pos(i).getLength();
 		fwrite(&len, sizeof(len), 1, f);
-		// Запись содержимого строки
+		// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		fwrite(this->subjects.get_by_pos(i).get_str(), len + 1, 1, f);
 	}
 }
@@ -235,9 +235,9 @@ void StudentAgr::read_from_binary_file2(FILE* f)
 {
 	int len;
 	fread(&len, sizeof(len), 1, f);
-	// setLength - освобождаем старую память, задаем новую длину и выделяем новую память
+	// setLength - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	this->surname.setLength(len);
-	// читаем содержимое строки
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	fread(this->surname.get_str(), len + 1, 1, f);
 
 	fread(&len, sizeof(len), 1, f);
