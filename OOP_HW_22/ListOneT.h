@@ -3,6 +3,8 @@
 #include <iostream>
 #include <assert.h>
 #include <fstream>
+#include "MyString.h"
+
 
 using namespace std;
 
@@ -27,6 +29,7 @@ public:
 
 	void add_end(const T& data);
 	void show() const;
+	void show_user_login() const;
 	void add_begin(const T& data);
 	void pop_front();
 	void pop_back();
@@ -44,6 +47,10 @@ public:
 	void save_to_file_plus(std::ostream& fout) const;
 
 	bool containe(const T& data) const;
+
+	bool user_login_exist(MyString& login);
+	bool user_login_correct(MyString& login);
+	bool user_password_correct(MyString& password);
 
 	bool operator==(const ListOneT& obj) const;
 	bool operator!=(const ListOneT& obj) const;
@@ -189,6 +196,25 @@ void ListOneT<T>::show() const
 	}*/
 
 	cout << endl;
+}
+
+template<class T>
+inline void ListOneT<T>::show_user_login() const
+{
+	if (!this->head)
+	{
+		cout << "List is Empty\n";
+		return;
+	}
+
+	ElementType<T>* current = this->head;
+
+	for (int i = 0; i < this->count; i++)
+	{
+		cout << i + 1 << ". " << current->data.get_login() << endl;
+		current = current->next; // Переход на следующий элемент
+	}
+
 }
 
 template<class T>
@@ -378,6 +404,63 @@ bool ListOneT<T>::containe(const T& data) const
 	}
 
 	cout << "\nAdress = " << &current << endl;
+	return false;
+}
+
+template<class T>
+bool ListOneT<T>::user_login_exist(MyString& login)
+{
+	if (!this->head) // Если список пуст
+		return false;
+
+	ElementType<T>* current = this->head;
+	while (current)
+	{
+		if (current->data.get_login() == login)
+		{
+			cout << "\nError login exist! Enter another login please!" << endl;
+			return true;
+		}
+		current = current->next;
+	}
+	return false;
+}
+
+template<class T>
+bool ListOneT<T>::user_login_correct(MyString& login)
+{
+	if (!this->head) // Если список пуст
+		return false;
+
+	ElementType<T>* current = this->head;
+	while (current)
+	{
+		if (current->data.get_login() == login)
+		{
+			return true;
+		}
+		current = current->next;
+	}
+	return false;
+}
+
+template<class T>
+inline bool ListOneT<T>::user_password_correct(MyString& password)
+{
+	if (!this->head) // Если список пуст
+		return false;
+
+	ElementType<T>* current = this->head;
+	while (current)
+	{
+		if (current->data.get_password() == password)
+		{
+			current->data.show();
+			return true;
+		}
+		current = current->next;
+	}
+	cout << "\nLogin Incorrect!";
 	return false;
 }
 

@@ -136,7 +136,9 @@
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colors.h" />
     <ClInclude Include="Coord.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="ListOneT.h" />
     <ClInclude Include="MyArray.h" />
     <ClInclude Include="MyString.h" />

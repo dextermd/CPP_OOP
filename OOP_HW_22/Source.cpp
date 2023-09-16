@@ -1,5 +1,4 @@
-﻿//#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>				// Для работы с файлами C++
 #include <conio.h>
 #include <iomanip>
@@ -8,9 +7,11 @@
 #include "StudentAgr.h"
 #include "Coord.h"
 #include "ListOneT.h"
+#include "User.h"
+
+#include "menu.h"
 
 using namespace std;
-
 
 int main()
 {
@@ -18,7 +19,7 @@ int main()
 #if 0
 
 	/*
-		Задание 1. 
+		Задание 1.
 			Для уже существующих классов(MyArray, ListOneType, StudentAgr) добавьте реализацию функционала для работы с файлами на языке С++:
 				+ перегрузку потока для записи объекта класса в бинарный файл;
 				+ перегрузку потока для чтения объекта класса из бинарного файла с инициализацией этого объекта;
@@ -27,7 +28,7 @@ int main()
 	*/
 
 	cout << "\n------------------------ MyArray ---------------------------------\n";
-	
+
 	MyArray arr(10, 1, 99), arr2;
 
 	ofstream f("arr.txt");
@@ -51,7 +52,7 @@ int main()
 	else {
 		cout << "\nError Writing File!";
 	}
-	
+
 
 	ifstream fin("my_array.txt", ios::binary);
 	if (fin)
@@ -125,7 +126,7 @@ int main()
 	sub.add_end("C#");
 
 	StudentAgr stud("Agapii", "Tanea", 22, "STEP", MyArray(15, 6, 12), sub), stud_copy;
-	
+
 	cout << stud;
 
 	ofstream stud_txt("stud.txt");
@@ -183,10 +184,10 @@ int main()
 			Для хранения пользователей используйте класс «Список / ListOneType» либо «Бинарное дерево поиска / MyTree».
 
 			Работу программы организуйте при помощи меню :
-				- Регистрация
-				− Вход в аккаунт
-				− Список пользователей
-				− Выход из программы
+				+ Регистрация
+				+ Вход в аккаунт
+				+ Список пользователей
+				+ Выход из программы
 
 			При регистрации пользователя необходимо проверить, нет ли пользователя с таким
 			логином, в противном случае вывести сообщение, что такой логин уже используется.
@@ -207,6 +208,12 @@ int main()
 		
 			По желанию можно расширить функционал программы.
 		*/
+
+	User user,read_user;
+	ListOneT<User> data;
+	
+	show_menu(1);
+	init_menu(data, user);
 
 #endif
 
