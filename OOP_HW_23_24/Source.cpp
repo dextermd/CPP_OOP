@@ -10,6 +10,11 @@
 #include "Dog.h"
 #include "Parrot.h"
 #include "Hamster.h"
+#include "Shape.h"
+#include "Circle.h"
+#include "Ellipse.h"
+#include "Rectangle.h"
+#include "Square.h"
 
 using namespace std;
 
@@ -41,7 +46,7 @@ int main()
 
 #endif 
 
-#if 1
+#if 0
 
 	/*
 		Задание 2. 
@@ -58,7 +63,7 @@ int main()
 	ptr->show();
 	ptr->show_type();
 	ptr->sound();
-	
+	delete ptr;
 
 #endif
 
@@ -80,8 +85,50 @@ int main()
 			Создайте массив фигур, сохраните фигуры в двоичный файл, загрузите в другой массив и отобразите информацию о каждой из фигур.
 	*/
 
+	Square square(1, 2, 5);
+	class Rectangle rectangle(3, 4, 6, 7);
+	Circle circle(8, 9, 10);
+	class Ellipse ellipse(11, 12, 13, 14);
+
+	Shape* shapes[] = { &square, &rectangle, &circle, &ellipse };
+	
+	ofstream fout("shape.txt", ios::binary);
+	if (fout)
+	{
+		for (const auto& shape : shapes) {
+			shape->show();
+			shape->save_to_binary_file(fout);
+		}	
+		fout.close();
+	}
+	else {
+		cout << "\nError write file!";
+	}
+	
+	Square square_c;
+	class Rectangle rectangle_c;
+	Circle circle_c;
+	class Ellipse ellipse_c;
+
+	Shape* shapes_c[] = { &square_c, &rectangle_c, &circle_c, &ellipse_c };
+
+	cout << "\n\nCOPY-----------------------------------------------------------------\n\n";
+
+	ifstream fin("shape.txt", ios::binary);
+
+	if (fin)
+	{
+		for (const auto& shape : shapes_c)
+		{
+			shape->read_from_binary_files(fin);
+			shape->show();
+		}
+	}
+	else {
+		cout << "\nError read file!";
+	}
+
+
 #endif
-
-
 
 }

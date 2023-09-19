@@ -20,18 +20,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="Ellipse.cpp" />
     <ClCompile Include="ForeignPassport.cpp" />
     <ClCompile Include="Hamster.cpp" />
     <ClCompile Include="HomePet.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Parrot.cpp" />
     <ClCompile Include="Passport.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="Dog.h" />
+    <ClInclude Include="Ellipse.h" />
     <ClInclude Include="ForeignPassport.h" />
     <ClInclude Include="Hamster.h" />
     <ClInclude Include="HomePet.h" />
@@ -39,6 +46,9 @@
     <ClInclude Include="MyString.h" />
     <ClInclude Include="Parrot.h" />
     <ClInclude Include="Passport.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Square.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
