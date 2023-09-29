@@ -66,6 +66,9 @@
     <ClCompile Include="StudentP.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StackD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h">
@@ -123,6 +126,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StudentP.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StackD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="123.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartPointerT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

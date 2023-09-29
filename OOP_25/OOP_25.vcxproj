@@ -137,6 +137,7 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StackD.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="StudentAgr.cpp" />
     <ClCompile Include="StudentP.CPP" />
@@ -146,6 +147,7 @@
     <ClCompile Include="WorkerStudent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="123.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="colors.h" />
     <ClInclude Include="Coord.h" />
@@ -158,6 +160,8 @@
     <ClInclude Include="MyTree.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="SmartPointerT.h" />
+    <ClInclude Include="StackD.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="StudentAgr.h" />
     <ClInclude Include="StudentP.H" />
