@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StackD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ListOneT.h" />
+    <ClInclude Include="MyString.h" />
     <ClInclude Include="StackD.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

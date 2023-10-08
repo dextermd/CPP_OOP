@@ -141,6 +141,30 @@ int main()
 		дата и т.д.Продемонстрируйте на примерах работу кода.
 	*/
 
+	ListOneT<int> list;
+	try
+	{
+		list.show();
+	}
+	catch (const char* ex)
+	{
+		cout << ex << endl;
+	}
+
+
+	StackD s(2);
+	try
+	{
+		s.push(10);
+		s.push(20);
+		s.push(30);
+		s.show();
+	}
+	catch (const char* ex)
+	{
+		cout << ex << endl;
+	}
+
 #endif
 
 }

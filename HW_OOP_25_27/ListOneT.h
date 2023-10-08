@@ -175,7 +175,7 @@ void ListOneT<T>::show() const
 {
 	if (!this->head)
 	{
-		cout << "List is Empty\n";
+		throw "List is Empty\n";
 		return;
 	}
 
