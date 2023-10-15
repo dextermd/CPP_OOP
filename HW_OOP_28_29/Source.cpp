@@ -8,79 +8,62 @@
 #include <vector>
 #include <algorithm>
 #include <list>
+#include <csignal>
 #include "Train.h"
 #include "IRSSystem.h"
+#include "Menu.h"
+#include "Ticket.h"
+#include "GaiData.h"
+#include "GaiMenu.h"
 
 
 using namespace std;
 
 int main()
 {
-	//setlocale(LC_ALL, "rus");
+	//setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "ru_RU.utf8");
 
-#if 1
+#if 0
 	/* Задание 1. 
 		Напишите программу «Автоматизированная информационная система ЖД
 		вокзала».
 		Система содержит сведения об отправлении поездов дальнего следования.
 		Для каждого поезда указываем : 
-			номер, 
-			время отправления, 
-			станцию назначения.
+			+ номер, 
+			+ время отправления, 
+			+ станцию назначения.
 		Для строк используйте класс string.
 
 		Обеспечить операции и организовать меню :
-			-Ввод данных в систему;
-			-Вывод информации о всех поездах;
-			-Вывод информации о запрашиваемом поезде;
-			-Выход из программы.
+			+ Ввод данных в систему;
+			+ Вывод информации о всех поездах;
+			+ Вывод информации о запрашиваемом поезде;
+			+ Выход из программы.
 		Использовать контейнерный класс vector.
-			− Реализуйте возможность записи информации двоичный файл и считывание из файла с
+			+ Реализуйте возможность записи информации двоичный файл и считывание из файла с
 			возможностью инициализации нового объекта.
-			− Реализуйте запись информации о расписании движения в текстовый файл с
+			+ Реализуйте запись информации о расписании движения в текстовый файл с
 			оформлением для публикации пользователю.*/
 
-	IRSSystem system;
-	//system.add();
-	system.add(126, "15:50", "Chisianu");
-	system.add(127, "11:40", "Balti");
-	system.add(128, "18:35", "Drochia");
-	system.add(129, "16:00", "Stauceni");
-	system.show_all();
-	system.show_by_number(12);
 
-	ofstream fout("IRSSystem.txt", ios::binary);
-	if (fout)
-	{
-		system.save_to_binary(fout);
-		fout.close();
-	}
-	else {
-		system.show_error("Error Writing File!");
-	}
-
-
-	//ifstream fin("stud_b.txt", ios::binary);
-	//if (fin)
-	//{
-	//	fin >> stud_copy;
-	//	fin.close();
-	//}
-	//else {
-	//	cout << "\nError Reading File!";
-	//}
-
-
+	IRSSystem system_file;
+	system_file.read_data_from_file();
+	show_menu(1);
+	init_menu(system_file);
 
 #endif
 
-#if 0
+#if 1
+
 	/*Задание 2. 
 		Реализуйте базу данных ГАИ по штрафным квитанциям с помощью бинарного
-			дерева, используйте контейнер set.Реализуйте пользовательский класс «Квитанция» Ключом
+			дерева, используйте контейнер set.
+			Реализуйте пользовательский класс «Квитанция» Ключом
 			будет служить номер автомашины, значением узла — список правонарушений.Если квитанция
 			добавляется в первый раз, то в дереве появляется новый узел, а в списке данные
 			по правонарушению; если нет, то данные заносятся в существующий список.
+
 			Необходимо также реализовать следующие операции :
 				− Дополнение базы данных с клавиатуры;
 				− Полный вывод базы данных на экран;
@@ -89,10 +72,36 @@ int main()
 				− Сохранить полную информацию по базе данных в текстовом файле.
 			Продемонстрируйте работу программы.Реализуйте меню пользователя.*/
 
+	//Ticket t("FRT 741", { "Crash" });
+	//Ticket t1("AAN 579", { "Speed", "Drift", "Crash" });
+	//Ticket t2("GGP 199", { "Speed", "Crash" });
+	//Ticket t3("SDF 656", { "Drift", "Crash" });
+	//Ticket t4("POI 888", { "Speed" });
+	//Ticket t5("DBL 666", { "Parking", "Drift", "Speed", "Crash" });
+
+	//GaiData gai_data(t), read_gai;
+	//gai_data.add(t1);
+	//gai_data.add(t2);
+	//gai_data.add(t3);
+	//gai_data.add(t4);
+	//gai_data.add(t5);
+
+	//gai_data.show();
+
+	//cout << "\nRead Gai__________________________________________\n";
+	//read_gai.read_data_from_file();
+	//read_gai.show();
+
+
+	GaiData data;
+	data.read_data_from_file();
+	show_menu_gai(1);
+	init_menu_gai(data);
+
+
 #endif
 
 
 
-	_getch();
 }
 

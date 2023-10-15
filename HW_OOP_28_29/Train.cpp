@@ -39,36 +39,6 @@ Train::~Train()
 {
 }
 
-std::ostream& operator<<(std::ofstream& out, Train& obj)
-{
-	int len;
 
-	out.write((char*)&obj.number, sizeof(obj.number));
 
-	len = obj.dep_time.length();
-	out.write((const char*)&len, sizeof(len));
-	out.write(obj.dep_time.c_str(), len);
 
-	len = obj.dest_station.length();
-	out.write((const char*)&len, sizeof(len));
-	out.write(obj.dest_station.c_str(), len);
-
-	return out;
-}
-
-std::istream& operator>>(std::ifstream& in, Train& obj)
-{
-	int len;
-
-	in.read((char*)&obj.number, sizeof(obj.number));
-
-	in.read((char*)&len, sizeof(len));
-	obj.dep_time.resize(len);
-	in.read(const_cast<char*>(obj.dep_time.c_str()), len);
-
-	in.read((char*)&len, sizeof(len));
-	obj.dest_station.resize(len);
-	in.read(const_cast<char*>(obj.dest_station.c_str()), len);
-
-	return in;
-}

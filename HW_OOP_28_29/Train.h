@@ -17,10 +17,6 @@ public:
 	const void show() const;
 	void init();
 
-	// Перегрузка потока записи в файл <<
-	friend std::ostream& operator<<(std::ofstream& out, Train& obj);
-	// Перегрузка потока чтении из файла >>
-	friend std::istream& operator>>(std::ifstream& in, Train& obj);
 
 	~Train();
 };
