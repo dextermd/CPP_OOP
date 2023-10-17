@@ -1,19 +1,19 @@
 #pragma once
-#include "Directory.h"
-class FileManager : public Directory
+#include <vector>
+#include "Folder.h"
+#include "Disk.h"
+#include"FileSystemEntity.h"
+
+class FileManager
 {
 private:
-    Directory root;
+	vector<Disk*> disks;
 
 public:
-    FileManager() : root("Root") {}
-
-    void create_file(const string& file_name, int file_size);
-
-    void create_directory(const string& dir_name);
-
-    void show() const;
-
-    bool delete_obj(const string& obj);
+	
+	void add_disk(const string& name);
+	const void show() const;
+	void add_file_to_disk(const string& disk_name, const string& format, const string& name, int size);
+	//void add_folder_to_disk();
 };
 

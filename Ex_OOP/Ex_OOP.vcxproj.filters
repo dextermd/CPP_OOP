@@ -21,13 +21,16 @@
     <ClCompile Include="File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Directory.cpp">
+    <ClCompile Include="Folder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileSystemEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Disk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +41,16 @@
     <ClInclude Include="File.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Directory.h">
+    <ClInclude Include="Folder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileSystemEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Disk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

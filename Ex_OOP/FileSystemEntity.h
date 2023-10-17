@@ -8,17 +8,17 @@ class FileSystemEntity
 
 protected:
 	string name;
+	int size;
 
 public:
 
-	FileSystemEntity() {};
-	FileSystemEntity(const string& _name) : name(_name) {}
+	FileSystemEntity(const string& name, int size);
 
-	virtual void show() const = 0;
+	virtual void show() const;
 	virtual int get_size() const = 0;
-	virtual string get_name() const { return name; }
+	virtual string get_name() const = 0;
 
-	virtual ~FileSystemEntity() = default;
+	virtual ~FileSystemEntity() {};
 
 };
 

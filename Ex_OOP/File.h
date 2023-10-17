@@ -7,19 +7,13 @@ using namespace std;
 class File : public FileSystemEntity
 {
 private:
-	int size;
+	string format;
 
 public:
 
-	File(string file_name, int file_size);
-
-	void show() const override{
-		cout << "File: " << name << "\t\t\tSize: " << size << " bytes" << endl;
-	}
-
-	int get_size() const override {
-		return size;
-	}
-
+	File(const string& format, const string& name, int size = 0);
+	void show() const override;
+	int get_size() const override;
+	string get_name() const override { return name; };
 };
 

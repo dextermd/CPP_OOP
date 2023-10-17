@@ -127,7 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="Folder.cpp" />
+    <ClCompile Include="Disk.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FileSystemEntity.cpp" />
@@ -135,7 +136,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Directory.h" />
+    <ClInclude Include="Folder.h" />
+    <ClInclude Include="Disk.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="FileSystemEntity.h" />

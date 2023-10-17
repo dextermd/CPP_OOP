@@ -1,19 +1,27 @@
 #include "FileManager.h"
 
-void FileManager::create_file(const string& file_name, int file_size)
+void FileManager::add_disk(const string& name)
 {
+	Disk* n_disk = new Disk(name);
+	disks.push_back(n_disk);
 }
 
-void FileManager::create_directory(const string& dir_name)
+const void FileManager::show() const
 {
+	for (const auto& disk : disks)
+	{
+		disk->show();
+	}
 }
 
-void FileManager::show() const
+void FileManager::add_file_to_disk(const string& disk_name, const string& format, const string& name, int size)
 {
-	root.show();
-}
-
-bool FileManager::delete_obj(const string& obj)
-{
-	return false;
+    for (auto& disk : disks)
+    {
+        if (disk->get_name() == disk_name)
+        {
+            File* new_folder = new File(format, name, size);
+            disk->add_file(new_folder);
+        }
+    }
 }
