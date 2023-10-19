@@ -49,6 +49,8 @@ int main()
 	// Задание 2.
 	FrequencyDictionary fd("input.txt");
 	fd.show();
+	fd.show_max();
+	fd.save_data_to_file();
 
 #endif
 
