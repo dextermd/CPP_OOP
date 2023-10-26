@@ -45,7 +45,6 @@ const void Hangman::read()
     {
         words.push_back(word);
     }
-
     input_file.close();
 }
 
@@ -128,9 +127,9 @@ bool Hangman::is_guessed()
 
 void Hangman::guessed_word_init(char& letter)
 {
-    search
-    int find = word.find()
-    if (found > -1)
+    int found = word.find(letter);
+    int foundUp = word.find(toupper(letter));
+    if (found > -1 || foundUp > -1)
     {
         cout << "Вы угадали букву.";
         for (int i = 0; i < word.size(); ++i) {
@@ -158,8 +157,27 @@ const void Hangman::show_guessed_word() const
     
 }
 
+const void Hangman::show_game_stats() const
+{
+    cout << "\nИскомое слово: " << word << endl;
+    cout << "Буквы игрока: ";
+    show_letters();
+    cout << "\nКоличество попыток : " << counts << endl;
+    cout << "Время: " << seconds << " секунд" << endl;
+}
+
+const void Hangman::show_letters() const
+{
+    for (const auto& latter : guessed_word)
+    {
+        cout << latter << " ";
+    }
+}
+
 void Hangman::start_game()
 {
+    time_t start = time(0);
+
     word = get_random_word();
 
     word_size = word.size();
@@ -167,7 +185,7 @@ void Hangman::start_game()
 
     do
     {
-        cout << word;
+        counts++;
         show_guessed_word();
         cout << "\nУгадайте букву: ";
         char letter;
@@ -177,7 +195,12 @@ void Hangman::start_game()
         
     } while (!is_guessed());
 
-    cout << endl << endl;
-}
+    time_t end = time(0);
+    seconds = difftime(end, start);
 
+    system("cls");
+    cout << "Поздравляем! Вы угадали слово!" << endl;
+    show_game_stats();
+    cout << endl;
+}
 
