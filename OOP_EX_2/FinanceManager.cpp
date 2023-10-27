@@ -38,3 +38,31 @@ void FinanceManager::topup_wallet(const string& wallet_number, double summa)
     balance += summa;
     wallets[wallet_number].set_balance(balance);
 }
+
+void FinanceManager::show_wallet_balance(const string& wallet_number)
+{
+    auto found = wallets.find(wallet_number);
+    if (found != wallets.end())
+    {
+        cout << endl << wallets[wallet_number].get_balance() << endl;
+    }
+    else {
+        cout << "\nНет такого кошелька";
+    }
+
+    
+}
+
+void FinanceManager::spend_from_wallet(const string& wallet_number, double summa, const string& category)
+{
+    auto walletIt = wallets.find(wallet_number);
+    auto categoryIt = find_if(categories.begin(), categories.end(), [&category](TransactionCategory& _category) { return _category.get_category() == category; });
+
+    if (walletIt != wallets.end() && categoryIt != categories.end()) {
+        time_t currentTime = time(nullptr);
+        walletIt->second.pay(summa, *categoryIt, currentTime);
+    }
+    else {
+        cout << "Кошелек или категория не найдены." << endl;
+    }
+}

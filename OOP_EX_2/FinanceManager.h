@@ -20,4 +20,6 @@ public:
 	const void show_categories() const;
 	void create_category(const string& category);
 	void topup_wallet(const string& wallet_number, double summa);
+	void show_wallet_balance(const string& wallet_number);
+	void spend_from_wallet(const string& wallet_number, double summa, const string& category);
 };
