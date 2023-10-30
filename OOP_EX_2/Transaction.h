@@ -14,8 +14,9 @@ class Transaction
 public:
 	Transaction(double summa, time_t datetime, const TransactionCategory& category);
 
-	time_t get_datetime() { return datetime; };
-	double get_summa() { return summa; };
+	time_t get_datetime() const { return datetime; }
+	double get_summa() const { return summa; };
+	TransactionCategory getCategory() const {return category;}
 
 	void set_datetime(time_t& datetime) { this->datetime = datetime; };
 	void set_summa(double& summa) { this->summa = summa; };

@@ -22,4 +22,12 @@ public:
 	void topup_wallet(const string& wallet_number, double summa);
 	void show_wallet_balance(const string& wallet_number);
 	void spend_from_wallet(const string& wallet_number, double summa, const string& category);
+	void spend_from_wallet(const string& wallet_number, double summa, const string& category, const string& data);
+	
+	time_t convert_date(string& data);
+	
+
+	void daily_raport(const string& wallet_number);
+	void weekly_raport(const string& wallet_number);
+	void monthly_raport(const string& wallet_number);
 };

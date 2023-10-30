@@ -23,9 +23,11 @@ public:
     string get_name() { return name; };
     string get_number() { return number; };
     double get_balance() { return balance; };
+    const vector<Transaction>& getTransactions() const { return transactions; };
 
     void set_name(const string& name) { this->name = name; };
     void set_number(const string& number) { this->number = number; };
     void set_balance(double balance) { this->balance = balance; };
+
 };
 

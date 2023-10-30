@@ -25,11 +25,26 @@ int main()
 
 	finance.create_category("Пополнение");
 	finance.create_category("Зарплата");
+	finance.create_category("Налоги");
+	finance.create_category("Комунальне");
 	finance.create_category("Покупки продуктов и услуг");
 	finance.create_category("Автомобильные расходы");
 
-	finance.spend_from_wallet("4200 0000 0000 0000", 500, "Автомобильные расходы");
+	//finance.spend_from_wallet("4200 0000 0000 0000", 500, "Автомобильные расходы");
+	//finance.spend_from_wallet("4200 0000 0000 0000", 700, "Покупки продуктов и услуг");
+
+	finance.spend_from_wallet("4200 0000 0000 0000", 30, "Покупки продуктов и услуг", "30.10.2023");
+	finance.spend_from_wallet("4200 0000 0000 0000", 28, "Покупки продуктов и услуг", "28.10.2023");
+	finance.spend_from_wallet("4200 0000 0000 0000", 24, "Комунальне", "24.10.2023");
+	finance.spend_from_wallet("4200 0000 0000 0000", 23, "Налоги", "23.10.2023");
+	finance.spend_from_wallet("4200 0000 0000 0000", 1, "Налоги", "1.10.2023");
+	finance.spend_from_wallet("4200 0000 0000 0000", 12, "Налоги", "30.9.2023");
+
 	finance.show_wallet_balance("4200 0000 0000 0000");
+
+	//finance.daily_raport("4200 0000 0000 0000");
+	//finance.weekly_raport("4200 0000 0000 0000");
+	finance.monthly_raport("4200 0000 0000 0000");
 	
 
 	//finance.show_categories();
